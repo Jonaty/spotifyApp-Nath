@@ -1,3 +1,12 @@
-<p>
-  home works!
-</p>
+<div class="card-columns">
+  <div class="card" *ngFor="let album of nuevosLanzamientos" >
+    <img class="card-img-top" [src]="album.images[0].url" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ album.name}}</h5>
+      <p class="card-text">
+          <span *ngFor="let artista of album.artists"  class="badge badge-primary">
+            {{ artista.name }}
+          </span>
+      </p>
+    </div>
+  </div>
