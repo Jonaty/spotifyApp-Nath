@@ -13,15 +13,19 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.obtieneAlbums();
+  async ngOnInit() {
+   await  this.obtieneAlbums();
   }
 
-  public obtieneAlbums() {
+  public async obtieneAlbums() {
     this.spotify.getNewReleases().subscribe((data: any) => {
-      // console.log('Data', data.albums.items);
-     this.nuevosLanzamientos = data.albums.items;
-     console.log('Albums', this.nuevosLanzamientos);
+      try {
+        this.nuevosLanzamientos = data.albums.items;
+        console.log('Albums', this.nuevosLanzamientos);
+      } catch (error) {
+        console.error(error);
+      }
+
     });
   }
 
